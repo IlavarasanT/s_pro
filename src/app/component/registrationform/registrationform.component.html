@@ -1,14 +1,13 @@
 
 <html>
-<body>
+<body class="form">
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
-      <form action="#">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your name" required>
+            <input type="text"  [(ngModel)]="user_name" class="form-control" placeholder="Enter your name">
           </div>
           <div class="input-box">
             <span class="details">Username</span>
@@ -57,11 +56,10 @@
           
         </div>
         <div class="button">
-          <input type="submit" value="Register">
+          <input type="button" (click)="addRegister()" value="Register">
         </div>
-      </form>
     </div>
   </div>
-
+  
 </body>
 </html>

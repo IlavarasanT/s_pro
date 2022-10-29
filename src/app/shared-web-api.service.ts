@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class SharedWebAPIService {
 
   
-  readonly ApiUrl="https://localhost:7188/api/user/"
+  readonly ApiUrl="https://localhost:7188/api/user"
   constructor(private http:HttpClient) { }
 
   getRegisterList():Observable<any[]>{
