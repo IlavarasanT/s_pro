@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoginComponent } from './component/login/login.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,12 +18,14 @@ export class SharedWebAPIService {
     return this.http.get<any>(this.ApiUrl+'/checkemailexist',val);
   }
   saveRegisterDetails(val:any){
-    debugger
     return this.http.post<any>(this.ApiUrl+'/register',val);
   }
+  // checkUserIsValid(val:any){
+  //   debugger
+  //   return this.http.get<any>(this.ApiUrl+'/checkuserisvalid/{email}',val);
+  // }
   checkUserIsValid(val:any){
-    debugger
-    return this.http.get<any>(this.ApiUrl+'/checkuserisvalid?email=',val);
+    return this.http.post<any>(this.ApiUrl+'/checkuserisvalid',val);
   }
 
 

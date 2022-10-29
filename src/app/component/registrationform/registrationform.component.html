@@ -6,7 +6,7 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">First Name</span>
-            <input type="text"  autofocus formControlName="fname" placeholder="Enter your name">
+            <input type="text" [(ngModel)]="firstName"   autofocus formControlName="fname" placeholder="Enter your name">
             <div *ngIf="form.controls['fname'].touched && form.controls['fname'].invalid" class="alert alert-danger">
               <div class="errorcls" *ngIf="form.controls['fname'].errors && form.controls['fname'].errors['required']">Name is required.</div>
               <div class="errorcls" *ngIf="form.controls['fname'].errors && form.controls['fname'].errors['minlength']">Name should be 3 character.</div>
@@ -15,7 +15,7 @@
           </div>
           <div class="input-box">
             <span class="details" >Last Name</span>
-            <input type="text" formControlName="lname" placeholder="Enter your username" required>
+            <input type="text" [(ngModel)]="lastName"  formControlName="lname" placeholder="Enter your username" required>
             <div *ngIf="form.controls['lname'].touched && form.controls['lname'].invalid" class="alert alert-danger">
               <div class="errorcls" *ngIf="form.controls['lname'].errors && form.controls['lname'].errors['required']">Name is required.</div>
               <div class="errorcls" *ngIf="form.controls['lname'].errors && form.controls['lname'].errors['minlength']">Name should be 3 character.</div>
@@ -24,7 +24,7 @@
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text"  formControlName="email" placeholder="Enter your email">
+            <input type="text" [(ngModel)]="email_address"   formControlName="email" placeholder="Enter your email">
             <div *ngIf="form.controls['email'].touched && form.controls['email'].invalid" class="alert alert-danger">
               <div class="errorcls" *ngIf="form.controls['email'].errors && form.controls['email'].errors['required']">Email is required.</div>
               <div class="errorcls" *ngIf="form.controls['email'].errors && form.controls['email'].errors['email']">Please enter valid email address.</div> 
@@ -32,7 +32,7 @@
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text"  formControlName="phnm" placeholder="Enter your number" required>
+            <input type="text" [(ngModel)]="phoneNumber"  formControlName="phnm" placeholder="Enter your number" required>
             <div *ngIf="form.controls['phnm'].touched && form.controls['phnm'].invalid" class="alert alert-danger">
               <div class="errorcls" *ngIf="form.controls['phnm'].errors && form.controls['phnm'].errors['required']">Phone number is required.</div>
               <div class="errorcls" *ngIf="form.controls['phnm'].errors && form.controls['phnm'].errors['pattern']">Phone number should not contain alphabets</div>
@@ -42,7 +42,7 @@
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" formControlName="password" placeholder="Enter your password" required>
+            <input type="text" [(ngModel)]="password"  formControlName="password" placeholder="Enter your password" required>
             <div *ngIf="form.controls['password'].touched && form.controls['password'].invalid" class="alert alert-danger">
               <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['required']">Password is required.</div>
               <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['minlength']">Password should be 8 character.</div>
@@ -53,16 +53,16 @@
 
           <div class="input-box">
             <span class="details">Address</span>
-            <input type="text" formControlName="add" placeholder="Address" required>
+            <input type="text" [(ngModel)]="address"  formControlName="add" placeholder="Address" required>
             <div *ngIf="form.controls['add'].touched && form.controls['add'].invalid" class="alert alert-danger">
-              <div class="errorcls" *ngIf="form.controls['add'].errors && form.controls['add'].errors['required']">Name is required.</div>
-              <div class="errorcls" *ngIf="form.controls['add'].errors && form.controls['add'].errors['minlength']">Name should be 8 character.</div>
+              <div class="errorcls" *ngIf="form.controls['add'].errors && form.controls['add'].errors['required']">Address is required.</div>
+              <div class="errorcls" *ngIf="form.controls['add'].errors && form.controls['add'].errors['minlength']">Address should be 8 character.</div>
           </div>
           </div>
         </div>
        
         <div class="button">
-          <input type="submit" [disabled]="isShowLoader" (click)="onSubmit()" value="Register">
+          <input type="button" [disabled]="isShowLoader" (click)="onSubmit()" value="Register">
         </div>
       </form>
     </div>

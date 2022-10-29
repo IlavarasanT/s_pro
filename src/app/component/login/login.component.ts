@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedWebAPIService } from 'src/app/shared-web-api.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,14 +18,13 @@ export class LoginComponent implements OnInit {
    
   });
 
-  constructor(private service:SharedWebAPIService) { }
+  constructor(private service:SharedWebAPIService,private http:HttpClient) { }
   email_address: string = '';
   password: string = '';
   ngOnInit(): void {
    
   }
   onSubmit() {
-    debugger
    var email=this.email_address;
     this.form.markAllAsTouched();
     if (this.form.valid) {
@@ -32,16 +32,21 @@ export class LoginComponent implements OnInit {
       
       var val={email:this.email_address};
       this.service.checkUserIsValid(val).subscribe(res=>{
-        alert(res.toString())
         alert("Login Success !!!");
-
+        document.location.href='/mainpage';
+        
       });
-      // this.service.checkUserIsValid("api/user/checkuserisvalid", val).subscribe((res: any) => {});
+
+//       let headers = new Headers();
+// headers.append('Content-Type', 'application/json');
+// headers.append('email', this.email_address);
+
+// this.http.get('https://localhost:7188/api/user/checkuserisvalid', {headers:headers})
 
          
         }
         else {
-          //alert("Invalid Credentials!!!");
+          alert("Invalid Credentials!!!");
         }
     
     }

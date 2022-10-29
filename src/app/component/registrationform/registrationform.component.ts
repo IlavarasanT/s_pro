@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { SharedWebAPIService } from 'src/app/shared-web-api.service';
 @Component({
   selector: 'app-registrationform',
   templateUrl: './registrationform.component.html',
@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegistrationformComponent implements OnInit {
   public fullName:string='';
-  constructor() { }
+  constructor(private service:SharedWebAPIService) { }
   user_name: string = '';
   
   isShowLoader: boolean = false;
@@ -32,19 +32,25 @@ export class RegistrationformComponent implements OnInit {
     var values=this.user_name;
     console.log(values);
   }
+  firstName: string = '';
+  lastName: string = '';
+  email_address: string = '';
+  password: string = '';
+  address: string = '';
+  phoneNumber: string = '';
   onSubmit() {
-   
+   var val={FirstName:this.firstName,LastName:this.lastName,Email:this.email_address,Password:this.password,Address:this.address,PhoneNumber:this.phoneNumber};
     this.form.markAllAsTouched();
     if (this.form.valid) {
       this.isShowLoader = true;
-      
-      
-         alert("Login Success !!!");
-
+      this.service.saveRegisterDetails(val).subscribe(res=>{
+      });
+         alert("Registered Successfully !!!");
+        document.location.href='/login';
          
         }
         else {
-          //alert("Invalid Credentials!!!");
+          alert("Check and Fill the Details!!!");
         }
     
     }
