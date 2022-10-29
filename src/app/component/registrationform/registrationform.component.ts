@@ -38,21 +38,35 @@ export class RegistrationformComponent implements OnInit {
   password: string = '';
   address: string = '';
   phoneNumber: string = '';
+
+  
   onSubmit() {
    var val={FirstName:this.firstName,LastName:this.lastName,Email:this.email_address,Password:this.password,Address:this.address,PhoneNumber:this.phoneNumber};
     this.form.markAllAsTouched();
     if (this.form.valid) {
       this.isShowLoader = true;
       this.service.saveRegisterDetails(val).subscribe(res=>{
-      });
-         alert("Registered Successfully !!!");
+        alert("Registered Successfully !!!");
         document.location.href='/login';
-         
+
+      });
+
         }
         else {
           alert("Check and Fill the Details!!!");
         }
     
+    }
+
+    checkEmailAddress(event:any){
+      this.service.getMethod('/getemail?email=' + this.email_address +'').subscribe((response:any)=>{
+        if(response != undefined && response != null && response.email==this.email_address){
+         alert("already you are registered!! please login....click the ok button it will redirect to login page.")
+        }
+        else{
+
+        }
+      })
     }
 
 }
