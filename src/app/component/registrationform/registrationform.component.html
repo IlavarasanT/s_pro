@@ -3,12 +3,11 @@
 <body class="form">
   <div class="container">
     <div class="title">Registration</div>
-    <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="content">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input type="text"  [(ngModel)]="user_name" class="form-control" placeholder="Enter your name">
+            <input type="text"   class="form-control" placeholder="Enter your name">
           </div>
           <div class="input-box">
             <span class="details">Username</span>
@@ -57,10 +56,9 @@
           
         </div>
         <div class="button">
-          <input type="button" (click)="submit()" value="Register">
+          <input type="button"  value="Register">
         </div>
     </div>
-  </form>
   </div>
   
 </body>
