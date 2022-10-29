@@ -1,65 +1,72 @@
-
-<html>
-<body class="form">
+<body>
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
+      <form action="#" [formGroup]="form" (keydown.enter)="onSubmit()">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Full Name</span>
-            <input type="text"   class="form-control" placeholder="Enter your name">
+            <span class="details">First Name</span>
+            <input type="text"  autofocus formControlName="fname" placeholder="Enter your name">
+            <div *ngIf="form.controls['fname'].touched && form.controls['fname'].invalid" class="alert alert-danger">
+              <div class="errorcls" *ngIf="form.controls['fname'].errors && form.controls['fname'].errors['required']">Name is required.</div>
+              <div class="errorcls" *ngIf="form.controls['fname'].errors && form.controls['fname'].errors['minlength']">Name should be 3 character.</div>
+              <div class="errorcls" *ngIf="form.controls['fname'].errors && form.controls['fname'].errors['pattern']">Name should not contain numbers</div>
+          </div>
           </div>
           <div class="input-box">
-            <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" required>
+            <span class="details" >Last Name</span>
+            <input type="text" formControlName="lname" placeholder="Enter your username" required>
+            <div *ngIf="form.controls['lname'].touched && form.controls['lname'].invalid" class="alert alert-danger">
+              <div class="errorcls" *ngIf="form.controls['lname'].errors && form.controls['lname'].errors['required']">Name is required.</div>
+              <div class="errorcls" *ngIf="form.controls['lname'].errors && form.controls['lname'].errors['minlength']">Name should be 3 character.</div>
+              <div class="errorcls" *ngIf="form.controls['lname'].errors && form.controls['lname'].errors['pattern']">Name should not contain numbers</div>
           </div>
-          <div class="input-box">
-            <span class="details">ADDRESS</span>
-            <input type="text" placeholder="Enter your Address" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <input type="text"  formControlName="email" placeholder="Enter your email">
+            <div *ngIf="form.controls['email'].touched && form.controls['email'].invalid" class="alert alert-danger">
+              <div class="errorcls" *ngIf="form.controls['email'].errors && form.controls['email'].errors['required']">Email is required.</div>
+              <div class="errorcls" *ngIf="form.controls['email'].errors && form.controls['email'].errors['email']">Please enter valid email address.</div> 
+          </div>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" required>
+            <input type="text"  formControlName="phnm" placeholder="Enter your number" required>
+            <div *ngIf="form.controls['phnm'].touched && form.controls['phnm'].invalid" class="alert alert-danger">
+              <div class="errorcls" *ngIf="form.controls['phnm'].errors && form.controls['phnm'].errors['required']">Phone number is required.</div>
+              <div class="errorcls" *ngIf="form.controls['phnm'].errors && form.controls['phnm'].errors['pattern']">Phone number should not contain alphabets</div>
+              <div class="errorcls" *ngIf="form.controls['phnm'].errors && form.controls['phnm'].errors['minlength']">Please enter the valid phone number.</div>
+              <div class="errorcls" *ngIf="form.controls['phnm'].errors && form.controls['phnm'].errors['maxlength']">Please enter the valid phone number.</div>
+          </div>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required>
+            <input type="text" formControlName="password" placeholder="Enter your password" required>
+            <div *ngIf="form.controls['password'].touched && form.controls['password'].invalid" class="alert alert-danger">
+              <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['required']">Password is required.</div>
+              <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['minlength']">Password should be 8 character.</div>
+              <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['maxlength']">Password should not exceed 20 character.</div>
+              <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['pattern']">Password should contain atleast one Uppercase, Lowercase, Number and Specail symbols like $@!%*?&</div>
           </div>
-          
-        </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title">Gender</span>
-          <div class="category">
-            <label for="dot-1">
-            <span class="dot one"></span>
-            <span class="gender">Male</span>
-          </label>
-          <label for="dot-2">
-            <span class="dot two"></span>
-            <span class="gender">Female</span>
-          </label>
-          <label for="dot-3">
-            <span class="dot three"></span>
-            <span class="gender">Prefer not to say</span>
-            </label>
           </div>
-         
 
-
-          
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input type="text" formControlName="add" placeholder="Address" required>
+            <div *ngIf="form.controls['add'].touched && form.controls['add'].invalid" class="alert alert-danger">
+              <div class="errorcls" *ngIf="form.controls['add'].errors && form.controls['add'].errors['required']">Name is required.</div>
+              <div class="errorcls" *ngIf="form.controls['add'].errors && form.controls['add'].errors['minlength']">Name should be 8 character.</div>
+          </div>
+          </div>
         </div>
+       
         <div class="button">
-          <input type="button"  value="Register">
+          <input type="submit" [disabled]="isShowLoader" (click)="onSubmit()" value="Register">
         </div>
+      </form>
     </div>
   </div>
-  
+
 </body>
-</html>
+
