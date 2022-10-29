@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { SharedWebAPIService } from 'src/app/shared-web-api.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,19 +17,26 @@ export class LoginComponent implements OnInit {
    
   });
 
-  constructor() { }
-
+  constructor(private service:SharedWebAPIService) { }
+  email_address: string = '';
+  password: string = '';
   ngOnInit(): void {
    
   }
   onSubmit() {
-   
+    debugger
+   var email=this.email_address;
     this.form.markAllAsTouched();
     if (this.form.valid) {
       this.isShowLoader = true;
       
-      
-         alert("Login Success !!!");
+      var val={email:this.email_address};
+      this.service.checkUserIsValid(val).subscribe(res=>{
+        alert(res.toString())
+        alert("Login Success !!!");
+
+      });
+      // this.service.checkUserIsValid("api/user/checkuserisvalid", val).subscribe((res: any) => {});
 
          
         }

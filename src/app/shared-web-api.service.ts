@@ -17,10 +17,12 @@ export class SharedWebAPIService {
     return this.http.get<any>(this.ApiUrl+'/checkemailexist',val);
   }
   saveRegisterDetails(val:any){
+    debugger
     return this.http.post<any>(this.ApiUrl+'/register',val);
   }
   checkUserIsValid(val:any){
-    return this.http.get<any>(this.ApiUrl+'/checkuserisvalid',val);
+    debugger
+    return this.http.get<any>(this.ApiUrl+'/checkuserisvalid?email=',val);
   }
 
 
