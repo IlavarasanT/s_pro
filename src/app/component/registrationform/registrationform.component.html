@@ -24,7 +24,7 @@
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" [(ngModel)]="email_address"   formControlName="email" placeholder="Enter your email">
+            <input type="text" [(ngModel)]="email_address" (change)="checkEmailAddress($event)"   formControlName="email" placeholder="Enter your email">
             <div *ngIf="form.controls['email'].touched && form.controls['email'].invalid" class="alert alert-danger">
               <div class="errorcls" *ngIf="form.controls['email'].errors && form.controls['email'].errors['required']">Email is required.</div>
               <div class="errorcls" *ngIf="form.controls['email'].errors && form.controls['email'].errors['email']">Please enter valid email address.</div> 

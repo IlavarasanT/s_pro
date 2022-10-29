@@ -24,8 +24,12 @@ export class SharedWebAPIService {
   //   debugger
   //   return this.http.get<any>(this.ApiUrl+'/checkuserisvalid/{email}',val);
   // }
-  checkUserIsValid(val:any){
-    return this.http.post<any>(this.ApiUrl+'/checkuserisvalid',val);
+ 
+
+  getMethod(apiMethod:any,params?:any):Observable<any>{
+    var apiUrl = this.ApiUrl + apiMethod;
+    var response = this.http.get(apiUrl, { params });
+    return response;
   }
 
 

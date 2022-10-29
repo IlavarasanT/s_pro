@@ -31,18 +31,24 @@ export class LoginComponent implements OnInit {
       this.isShowLoader = true;
       
       var val={email:this.email_address};
-      this.service.checkUserIsValid(val).subscribe(res=>{
-        alert("Login Success !!!");
+
+      this.service.getMethod('/checkuser?email=' + this.email_address +'').subscribe((response:any)=>{
+        if(response != undefined && response != null && response.email==this.email_address && response.password==this.password){
+          alert("Login Success !!!");
         document.location.href='/mainpage';
+        }
+        else if(response != undefined && response != null && (response.email==this.email_address||response.password==this.password)){
+          alert("Please check the email and password is correct or not!! !!!");
+        }
+        else{
+          alert('User Doesnt exists');
+        }
+      })
+      // this.service.checkUserIsValid(val).subscribe(res=>{
+      //    alert("Login Success !!!");
+      //    document.location.href='/mainpage';
         
-      });
-
-//       let headers = new Headers();
-// headers.append('Content-Type', 'application/json');
-// headers.append('email', this.email_address);
-
-// this.http.get('https://localhost:7188/api/user/checkuserisvalid', {headers:headers})
-
+      // });
          
         }
         else {
