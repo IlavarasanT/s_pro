@@ -9,7 +9,7 @@ import { MainpageComponent} from './component/mainpage/mainpage.component';
 import { NewmainpageComponent } from './component/newmainpage/newmainpage.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'products',pathMatch:'full'},
+  {path:'', redirectTo:'mainpage',pathMatch:'full'},
   {path:'products', component: ProductsComponent},
   {path:'cart', component: CartComponent},
   {path: 'registrationform',component:RegistrationformComponent},
