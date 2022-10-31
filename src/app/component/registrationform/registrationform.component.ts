@@ -62,6 +62,7 @@ export class RegistrationformComponent implements OnInit {
       this.service.getMethod('/getemail?email=' + this.email_address +'').subscribe((response:any)=>{
         if(response != undefined && response != null && response.email==this.email_address){
          alert("already you are registered!! please login....click the ok button it will redirect to login page.")
+         document.location.href='/login';
         }
         else{
 
