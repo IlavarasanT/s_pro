@@ -39,9 +39,11 @@ export class LoginComponent implements OnInit {
         }
         else if(response != undefined && response != null && (response.email==this.email_address||response.password==this.password)){
           alert("Please check the email and password is correct or not!! !!!");
+          window.location.reload();
         }
         else{
           alert('User Doesnt exists');
+          window.location.reload();
         }
       })
       // this.service.checkUserIsValid(val).subscribe(res=>{
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           alert("Invalid Credentials!!!");
+          window.location.reload();
         }
     
     }

@@ -42,7 +42,7 @@
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" [(ngModel)]="password"  formControlName="password" placeholder="Enter your password" required>
+            <input type="password" [(ngModel)]="password"  formControlName="password" placeholder="Enter your password" required>
             <div *ngIf="form.controls['password'].touched && form.controls['password'].invalid" class="alert alert-danger">
               <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['required']">Password is required.</div>
               <div class="errorcls" *ngIf="form.controls['password'].errors && form.controls['password'].errors['minlength']">Password should be 8 character.</div>
