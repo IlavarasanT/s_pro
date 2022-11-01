@@ -25,7 +25,9 @@ export class SharedWebAPIService {
   //   return this.http.get<any>(this.ApiUrl+'/checkuserisvalid/{email}',val);
   // }
  
-
+  UploadPhoto(val:any){
+    return this.http.post(this.ApiUrl+'/Employee/SaveFile',val);
+  }
   getMethod(apiMethod:any,params?:any):Observable<any>{
     var apiUrl = this.ApiUrl + apiMethod;
     var response = this.http.get(apiUrl, { params });

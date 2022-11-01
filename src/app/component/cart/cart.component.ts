@@ -26,4 +26,9 @@ export class CartComponent implements OnInit {
     this.cartService.removeAllCart();
   }
 
+  checkoutcart(){
+    alert("Your Orders are Placed Successfully!")
+    this.cartService.removeAllCart();
+  }
+
 }
