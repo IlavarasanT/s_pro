@@ -7,6 +7,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { LoginComponent } from './component/login/login.component';
 import { MainpageComponent} from './component/mainpage/mainpage.component';
 import { NewmainpageComponent } from './component/newmainpage/newmainpage.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'mainpage',pathMatch:'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'mainpage', component:MainpageComponent},
   {path:'newmainpage', component:NewmainpageComponent},
+  {path:'addproduct',component:AddProductComponent}
 
 
 ];

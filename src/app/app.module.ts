@@ -18,6 +18,7 @@ import { HomeComponent } from './component/home/home.component';
 import { BodyComponent } from './component/body/body.component';
 import { CardsComponent } from './component/carousel/cards.component';
 import { NewmainpageComponent } from './component/newmainpage/newmainpage.component';
+import { AddProductComponent } from './add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { NewmainpageComponent } from './component/newmainpage/newmainpage.compon
          HomeComponent,
          BodyComponent,
          CardsComponent,
-         NewmainpageComponent
+         NewmainpageComponent,
+         AddProductComponent
   ],
   imports: [
     BrowserModule,

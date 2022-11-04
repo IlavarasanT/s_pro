@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
    
   }
   onSubmit() {
+    debugger
    var email=this.email_address;
     this.form.markAllAsTouched();
     if (this.form.valid) {
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
       var val={email:this.email_address};
 
       this.service.getMethod('/checkuser?email=' + this.email_address +'').subscribe((response:any)=>{
+        debugger
         if(response != undefined && response != null && response.email==this.email_address && response.password==this.password){
           alert("Login Success !!!");
         document.location.href='/mainpage';

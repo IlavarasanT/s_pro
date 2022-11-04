@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
+import { SharedWebAPIService } from 'src/app/shared-web-api.service';
 
 @Component({
   selector: 'app-products',
@@ -10,9 +11,10 @@ import { CartService } from 'src/app/service/cart.service';
 export class ProductsComponent implements OnInit {
 
   public productList : any ;
+  public myProductList:any;
   public filterCategory : any
   searchKey:string ="";
-  constructor(private api : ApiService, private cartService : CartService) { }
+  constructor(private api : ApiService, private cartService : CartService,private service:SharedWebAPIService) { }
 
   ngOnInit(): void {
     this.api.getProduct()
@@ -31,6 +33,7 @@ export class ProductsComponent implements OnInit {
     this.cartService.search.subscribe((val:any)=>{
       this.searchKey = val;
     })
+this.getProduct();
   }
   addtocart(item: any){
     this.cartService.addtoCart(item);
@@ -42,6 +45,12 @@ export class ProductsComponent implements OnInit {
         return a;
       }
     })
+  }
+  getProduct(){
+    this.service.getProductList().subscribe((data:any)=>{
+      this.myProductList=data
+    });
+
   }
 
 }

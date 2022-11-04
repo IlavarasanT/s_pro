@@ -1,0 +1,41 @@
+<body>
+    <div class="container">
+      <div class="title">Add Product</div>
+      <div class="content">
+        <form action="#" [formGroup]="form" (keydown.enter)="onSubmit()">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Product Name</span>
+              <input type="text" [(ngModel)]="productName"   autofocus formControlName="productName" placeholder="Enter your name">
+            </div>
+            <div class="input-box">
+              <span class="details" >Product Description</span>
+              <input type="text" [(ngModel)]="productDesc"  formControlName="productDesc" placeholder="Enter your username" required>
+            </div>
+           
+            <div class="input-box">
+              <span class="details">Product Price</span>
+              <input type="text" [(ngModel)]="productPrice"  formControlName="productPrice" placeholder="Enter your number" required>
+            </div>
+            <div class="input-box">
+                <span class="details">Product Quantity</span>
+                <input type="text" [(ngModel)]="productQty"  formControlName="productQty" placeholder="Enter your number" required>
+              </div>
+            <div>
+              <span class="input-box">Product Image</span>
+              <img [src]="imageSrc" height="250px;" width="200px;">
+              <input type="file"  formControlName="logo" (change)="uploadPhoto($event.target)" /> 
+            </div>
+    
+            </div>
+         
+          <div class="button">
+            <input type="button" (click)="onSubmit()" value="Add Product">
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  </body>
+  
+  
