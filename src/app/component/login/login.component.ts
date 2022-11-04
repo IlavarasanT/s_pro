@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedWebAPIService } from 'src/app/shared-web-api.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,14 +19,13 @@ export class LoginComponent implements OnInit {
    
   });
 
-  constructor(private service:SharedWebAPIService,private http:HttpClient) { }
+  constructor(private service:SharedWebAPIService,private http:HttpClient,private authService:AuthService) { }
   email_address: string = '';
   password: string = '';
   ngOnInit(): void {
    
   }
   onSubmit() {
-    debugger
    var email=this.email_address;
     this.form.markAllAsTouched();
     if (this.form.valid) {
@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
       var val={email:this.email_address};
 
       this.service.getMethod('/checkuser?email=' + this.email_address +'').subscribe((response:any)=>{
-        debugger
         if(response != undefined && response != null && response.email==this.email_address && response.password==this.password){
+          localStorage.setItem('Email', response.email);
           alert("Login Success !!!");
         document.location.href='/mainpage';
         }

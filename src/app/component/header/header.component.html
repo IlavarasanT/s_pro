@@ -16,8 +16,12 @@
         </div>   
            
         
-        <button routerLink="login" class="btn btn-danger">
+        <button routerLink="login" *ngIf="logoShow1" class="btn btn-danger">
             <i style="font-size: 20px;" class="fas fa-user"></i> 
+        </button>
+
+        <button (click)="logout()" *ngIf="logoShow2" class="btn btn-danger">
+            <i style="font-size: 20px;" class="fa fa-sign-out"></i> 
         </button>
         
         <button routerLink="cart" class="btn btn-danger">
