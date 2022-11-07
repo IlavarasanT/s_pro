@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.logoShow2=false;
     localStorage.setItem('Email', '');
-    
     this.authService.isLoggedIn();
     document.location.href='/login';
   }
